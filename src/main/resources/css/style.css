@@ -1,0 +1,13 @@
+.bodybg{
+    -fx-background-image: url("../images/screens/title_screen.jpg");
+    -fx-background-repeat: stretch;
+}
+
+.configBg{
+    -fx-background-image: url("../images/screens/background.png");
+    -fx-background-repeat: stretch;
+}
+
+.configBgMain {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+}

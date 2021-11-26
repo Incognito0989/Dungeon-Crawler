@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<GridPane onKeyPressed="#onWasd" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.InitialGameScreenController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <ImageView fx:id="background" fitHeight="700.0" fitWidth="700.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <image>
+            <Image url="@../images/screens/background.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="pane" style="-fx-background-color: dodgerblue; -fx-background-size: stretch;" styleClass="bodybg" stylesheets="@../css/gameBackground1.css" visible="false">
+         <children>
+            <Label fx:id="roomCoord" layoutY="89.0" prefHeight="27.0" prefWidth="345.0" text="Room:" textFill="#e5ac0e">
+               <font>
+                  <Font name="Algerian" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="exitCoord" layoutY="125.0" prefHeight="27.0" prefWidth="345.0" text="Exit: " textFill="#e5ac0e">
+               <font>
+                  <Font name="Algerian" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ToolBar prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: lightgreen;" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
+
+                   <Label fx:id="goldAmount" prefHeight="27.0" prefWidth="146.0" text="Gold: " textFill="#1029e3" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP">
+         <font>
+            <Font name="Algerian" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="name" prefHeight="27.0" prefWidth="161.0" text="Name:" textFill="#1029e3" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP">
+         <font>
+            <Font name="Algerian" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="weapon" alignment="TOP_LEFT" prefHeight="44.0" prefWidth="230.0" text="Weapon:" textFill="#1029e3" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+         <font>
+            <Font name="Algerian" size="18.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="40.0" />
+         </GridPane.margin>
+      </Label>
+      <VBox fx:id="playerMove" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="125.0" prefWidth="125.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <children>
+            <Label fx:id="playerHPLabel" text="Your HP:" textFill="#1029e3">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <ProgressBar fx:id="playerHP" prefHeight="18.0" prefWidth="114.0" progress="1.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </ProgressBar>
+            <Circle fx:id="characterShape" fill="#ac0404" radius="21.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="2.0" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <Group GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" layoutY="-14.0" prefHeight="369.0" prefWidth="230.0" spacing="10.0">
+               <children>
+                  <ImageView fx:id="monsterEncounter" disable="true" fitHeight="100.0" fitWidth="150.0" onMouseClicked="#playerAttacks" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/monsters/angry_walter.png" />
+                     </image>
+                  </ImageView>
+                  <ProgressBar fx:id="walterHP" disable="true" prefHeight="18.0" prefWidth="200.0" progress="1.0" visible="false" />
+                  <Label fx:id="walterHPLabel" disable="true" text="Enemy HP:" textFill="#1029e3" visible="false" />
+               </children>
+            </VBox>
+         </children>
+      </Group>
+      <Button fx:id="exitButton" disable="true" mnemonicParsing="false" onMouseClicked="#onExitDungeon" text="Exit" visible="false" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <Button fx:id="menuButton" mnemonicParsing="false" onMouseClicked="#onClickExit" text="Restart" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets right="20.0" top="40.0" />
+         </GridPane.margin>
+      </Button>
+      <ImageView fx:id="itemOne" disable="true" fitHeight="40.0" fitWidth="40.0" onMouseEntered="#onItemDesc" onMouseExited="#onItemDescOff" pickOnBounds="true" preserveRatio="true" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+         <image>
+            <Image url="@../images/screens/background.png" />
+         </image>
+         <GridPane.margin>
+            <Insets bottom="5.0" left="5.0" />
+         </GridPane.margin>
+      </ImageView>
+      <ImageView fx:id="itemTwo" disable="true" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onInventoryClick" onMouseEntered="#onItemDesc" onMouseExited="#onItemDescOff" pickOnBounds="true" preserveRatio="true" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+         <image>
+            <Image url="@../images/screens/background.png" />
+         </image>
+         <GridPane.margin>
+            <Insets bottom="5.0" left="50.0" />
+         </GridPane.margin>
+      </ImageView>
+      <ImageView fx:id="itemThree" disable="true" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onInventoryClick" onMouseEntered="#onItemDesc" onMouseExited="#onItemDescOff" pickOnBounds="true" preserveRatio="true" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+         <image>
+            <Image url="@../images/screens/background.png" />
+         </image>
+         <GridPane.margin>
+            <Insets bottom="5.0" left="95.0" />
+         </GridPane.margin>
+      </ImageView>
+      <ImageView fx:id="itemSix" disable="true" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onInventoryClick" onMouseEntered="#onItemDesc" onMouseExited="#onItemDescOff" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+         <image>
+            <Image url="@../images/screens/background.png" />
+         </image>
+         <GridPane.margin>
+            <Insets bottom="5.0" right="5.0" />
+         </GridPane.margin>
+      </ImageView>
+      <ImageView fx:id="itemFive" disable="true" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onInventoryClick" onMouseEntered="#onItemDesc" onMouseExited="#onItemDescOff" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+         <image>
+            <Image url="@../images/screens/background.png" />
+         </image>
+         <GridPane.margin>
+            <Insets bottom="5.0" right="50.0" />
+         </GridPane.margin>
+      </ImageView>
+      <ImageView fx:id="itemFour" disable="true" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onInventoryClick" onMouseEntered="#onItemDesc" onMouseExited="#onItemDescOff" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+         <image>
+            <Image url="@../images/screens/background.png" />
+         </image>
+         <GridPane.margin>
+            <Insets bottom="5.0" right="95.0" />
+         </GridPane.margin>
+      </ImageView>
+      <TextArea fx:id="itemOneDesc" maxHeight="80.0" maxWidth="160.0" prefHeight="170.0" prefWidth="114.0" visible="false" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="30.0" left="80.0" />
+         </GridPane.margin>
+      </TextArea>
+      <TextArea fx:id="itemTwoDesc" maxHeight="80.0" maxWidth="160.0" prefHeight="170.0" prefWidth="114.0" visible="false" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="30.0" left="80.0" />
+         </GridPane.margin>
+      </TextArea>
+      <TextArea fx:id="itemThreeDesc" maxHeight="80.0" maxWidth="160.0" prefHeight="170.0" prefWidth="114.0" style="-fx-border-color: brown;" visible="false" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="30.0" left="120.0" />
+         </GridPane.margin>
+      </TextArea>
+      <TextArea fx:id="itemSixDesc" maxHeight="80.0" maxWidth="160.0" prefHeight="170.0" prefWidth="114.0" visible="false" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="30.0" right="30.0" />
+         </GridPane.margin>
+      </TextArea>
+      <TextArea fx:id="itemFiveDesc" maxHeight="80.0" maxWidth="160.0" prefHeight="170.0" prefWidth="114.0" visible="false" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="30.0" right="80.0" />
+         </GridPane.margin>
+      </TextArea>
+      <TextArea fx:id="itemFourDesc" editable="false" maxHeight="80.0" maxWidth="160.0" onKeyPressed="#onWasd" prefHeight="170.0" prefWidth="114.0" visible="false" wrapText="true" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="30.0" right="120.0" />
+         </GridPane.margin>
+      </TextArea>
+      <ImageView fx:id="potionDrop" disable="true" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onItemDropClick" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <ImageView fx:id="weaponDrop" disable="true" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onItemDropClick" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <Button fx:id="challengeButton" alignment="CENTER" disable="true" layoutX="240.0" layoutY="247.0" mnemonicParsing="false" onMouseClicked="#onChallengeRoomEnter" text="Challenge: 75 Gold" visible="false" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+       <Rectangle fx:id="doorWest" arcHeight="5.0" arcWidth="5.0" fill="#a0a6ac" height="154.0" onMouseClicked="#onDoorClick" stroke="BLACK" strokeType="INSIDE" width="38.0" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+      <Rectangle fx:id="doorSouth" arcHeight="5.0" arcWidth="5.0" fill="#a0a6ac" height="38.0" onMouseClicked="#onDoorClick" stroke="BLACK" strokeType="INSIDE" width="154.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS" />
+       <Rectangle fx:id="doorEast" arcHeight="5.0" arcWidth="5.0" fill="#a0a6ac" height="154.0" layoutX="10.0" layoutY="183.0" onMouseClicked="#onDoorClick" stroke="BLACK" strokeType="INSIDE" width="38.0" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+       <Rectangle fx:id="doorNorth" arcHeight="5.0" arcWidth="5.0" fill="#a0a6ac" height="38.0" onMouseClicked="#onDoorClick" stroke="BLACK" strokeType="INSIDE" width="154.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS" />
+   </children>
+</GridPane>
